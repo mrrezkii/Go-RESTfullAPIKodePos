@@ -9,6 +9,7 @@ type provinsi struct {
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 var dataProvinsi = []provinsi{
 	{"provinces_id": 1, "name": "Bali", "link": "http://www.nomor.net/_kodepos.php?_i=kota-kodepos&sby=000000&daerah=Provinsi&jobs=Bali"},
 	{"provinces_id": 2, "name": "Bangka Belitung", "link": "http://www.nomor.net/_kodepos.php?_i=kota-kodepos&sby=000000&daerah=Provinsi&jobs=Bangka Belitung"},
@@ -52,6 +53,8 @@ type kabupaten struct {
 	name         string
 }
 
+=======
+>>>>>>> parent of 202363a... Menambahkan data provinsi
 =======
 >>>>>>> parent of 202363a... Menambahkan data provinsi
 func main() {

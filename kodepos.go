@@ -1,6 +1,10 @@
 package main
 
-import "fmt"
+import (
+	"encoding/json"
+	"fmt"
+	"net/http"
+)
 
 type daerah struct {
 	idDaerah   string
@@ -60,6 +64,24 @@ var dataKodepos = []kodepos{
 	kodepos{37, "B", "Kras", "Purwodadi", "64150"},
 	kodepos{38, "B", "Kras", "Setonorejo", "64130"},
 	kodepos{39, "B", "Kras", "Pelas", "641334"},
+}
+
+func getDaerah(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Content-Type", "application/json")
+
+	if r.Method == "POST" {
+		var result, err = json.Marshal(dataDaerah)
+
+		if err != nil {
+			http.Error(w, err.Error(), http.StatusInternalServerError)
+			return
+		}
+
+		w.Write(result)
+		return
+	}
+
+	http.Error(w, "", http.StatusBadRequest)
 }
 
 func main() {

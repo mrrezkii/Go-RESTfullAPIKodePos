@@ -119,5 +119,9 @@ func getKodepos(w http.ResponseWriter, r *http.Request) {
 }
 
 func main() {
-	fmt.Println("Hello World!")
+	http.HandleFunc("/daerah", getDaerah)
+	http.HandleFunc("/kodepos", getKodepos)
+
+	fmt.Println("starting web server at http://localhost:8080/")
+	http.ListenAndServe(":8080", nil)
 }

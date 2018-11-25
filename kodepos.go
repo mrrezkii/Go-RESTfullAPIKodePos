@@ -45,6 +45,12 @@ var dataProvinsi = []provinsi{
 	{"provinces_id": 34, "name": "Sumatera Utara", "link": "http://www.nomor.net/_kodepos.php?_i=kota-kodepos&sby=000000&daerah=Provinsi&jobs=Sumatera Utara"},
 }
 
+type kabupaten struct {
+	provinces_id int
+	city_id      int
+	name         string
+}
+
 func main() {
 	fmt.Println("Hello World!")
 }

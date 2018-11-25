@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"net/http"
+	"strconv"
 )
 
 type daerah struct {
@@ -78,6 +79,39 @@ func getDaerah(w http.ResponseWriter, r *http.Request) {
 		}
 
 		w.Write(result)
+		return
+	}
+
+	http.Error(w, "", http.StatusBadRequest)
+}
+
+func getKodepos(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Content-Type", "application/json")
+
+	if r.Method == "POST" {
+		var id, errc = strconv.Atoi(r.FormValue("id"))
+		if errc != nil {
+			http.Error(w, errc.Error(), http.StatusBadRequest)
+			return
+		}
+		var result []byte
+		var err error
+
+		for _, each := range dataKodepos {
+			if each.idKodePos == id {
+				result, err = json.Marshal(each)
+
+				if err != nil {
+					http.Error(w, err.Error(), http.StatusInternalServerError)
+					return
+				}
+
+				w.Write(result)
+				return
+			}
+		}
+
+		http.Error(w, "Data tidak ditemukan", http.StatusBadRequest)
 		return
 	}
 
